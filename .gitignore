@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# Environment / secrets — NEVER commit real credentials
+.env
+*.local.env
+secrets/
+service-account*.json
+google-ads.yaml
+
+# Playwright
+/test-results/
+/playwright-report/
+
+# Local run artifacts
+*.log
+.DS_Store
+
+# Reports are generated; keep only the committed history snapshots in data/
+docs/_local_preview/

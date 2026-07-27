@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WeLovePilates Monitor</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --card: #ffffff; --text: #1a1d21; --muted: #6b7280;
+    --border: #e5e7eb; --accent: #c2185b;
+    --ok: #15803d; --ok-bg: #dcfce7;
+    --warning: #b45309; --warning-bg: #fef3c7;
+    --error: #b91c1c; --error-bg: #fee2e2;
+    --info: #1d4ed8; --info-bg: #dbeafe;
+    --nc: #4b5563; --nc-bg: #f3f4f6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1115; --card: #191c22; --text: #e6e8eb; --muted: #9aa1ab;
+      --border: #2a2e37; --accent: #f472b6;
+      --ok: #4ade80; --ok-bg: #14321f;
+      --warning: #fbbf24; --warning-bg: #3a2c08;
+      --error: #f87171; --error-bg: #3a1414;
+      --info: #93c5fd; --info-bg: #16233f;
+      --nc: #cbd5e1; --nc-bg: #23272f;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+         background:var(--bg); color:var(--text); line-height:1.5; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 24px 16px 64px; }
+  header.top { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom: 8px; }
+  header.top h1 { font-size: 1.5rem; margin:0; }
+  .sub { color:var(--muted); font-size:.9rem; margin-bottom:24px; }
+  .badge { display:inline-flex; align-items:center; gap:6px; padding:4px 12px; border-radius:999px;
+           font-size:.85rem; font-weight:600; }
+  .st-ok{background:var(--ok-bg);color:var(--ok);}
+  .st-warning{background:var(--warning-bg);color:var(--warning);}
+  .st-error{background:var(--error-bg);color:var(--error);}
+  .st-info{background:var(--info-bg);color:var(--info);}
+  .st-not_configured{background:var(--nc-bg);color:var(--nc);}
+  .card { background:var(--card); border:1px solid var(--border); border-radius:14px;
+          padding:20px; margin-bottom:16px; }
+  .card h2 { margin:0 0 4px; font-size:1.15rem; display:flex; align-items:center; gap:10px; justify-content:space-between;}
+  .card h2 .t { display:flex; align-items:center; gap:10px; }
+  .card .summary { color:var(--muted); margin:0 0 14px; }
+  .metrics { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
+  .metric { background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:8px 14px; min-width:120px; }
+  .metric .k { font-size:.72rem; text-transform:uppercase; letter-spacing:.03em; color:var(--muted); }
+  .metric .v { font-size:1.15rem; font-weight:700; }
+  ul.sugg { margin:8px 0 0; padding-left: 20px; }
+  ul.sugg li { margin-bottom:6px; }
+  .setup { background:var(--nc-bg); border-radius:10px; padding:12px 14px; font-size:.9rem; color:var(--nc); }
+  table { width:100%; border-collapse:collapse; font-size:.88rem; margin-top:6px; }
+  .scroll { overflow-x:auto; }
+  th,td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--border); white-space:nowrap; }
+  th { color:var(--muted); font-weight:600; font-size:.78rem; text-transform:uppercase; }
+  .row-error td:first-child { border-left:3px solid var(--error); }
+  .row-warning td:first-child { border-left:3px solid var(--warning); }
+  .spark { height:32px; }
+  .heat td { text-align:center; font-variant-numeric:tabular-nums; border:1px solid var(--border); min-width:34px; }
+  .actions { background:linear-gradient(135deg, rgba(194,24,91,.08), transparent); }
+  footer { color:var(--muted); font-size:.8rem; text-align:center; margin-top:32px; }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>🩷 WeLovePilates Monitor</h1>
+    <span class="badge st-warning">⚠️ Achtung</span>
+  </header>
+  <div class="sub">
+    Stand: 2026-07-27 · <a href="https://www.welovepilates.de">https://www.welovepilates.de</a>
+     · Historie: 14 Tage
+  </div>
+
+  
+  <div class="card" style="border-color:var(--warning); background:var(--warning-bg)">
+    <strong>⚠️ Beispiel-Ansicht mit Demo-Daten.</strong> So sieht das Dashboard aus,
+    sobald die Zugangsdaten (Wix, Google Ads, Search Console) hinterlegt sind.
+    Der erste echte Lauf ersetzt diese Seite. Siehe <code>SETUP.md</code>.
+  </div>
+  
+
+  
+  <div class="card actions">
+    <h2><span class="t">🎯 Wichtigste Handlungsempfehlungen</span></h2>
+    <ul class="sugg">
+      
+      <li><strong>Website &amp; Fehler:</strong> On-Page: Startseite: Meta-Description zu lang (182 Zeichen) — Ziel ≤ 160.</li>
+      
+      <li><strong>Kursbuchungen &amp; Kursplan:</strong> Mo 07:00 &amp; Di 08:00 sind ausgebucht (100 %). Zusätzlichen Frühkurs oder zweiten Reformer-Slot anbieten.</li>
+      
+      <li><strong>Kursbuchungen &amp; Kursplan:</strong> Di 12:00 ist schwach ausgelastet (~38 %). Mittags-Slot testweise streichen oder als Business-Lunch-Kurs (30 Min.) neu positionieren.</li>
+      
+      <li><strong>Kursbuchungen &amp; Kursplan:</strong> Abendfenster 17–19 Uhr trägt das Geschäft — Kernangebot dort absichern und Wartelisten aktiv nachbesetzen.</li>
+      
+      <li><strong>Google Ads:</strong> Kampagne „Display – Retargeting“ hat niedrige CTR (0,60 %) und 0 Conversions. Creatives erneuern oder Budget in die Search-Kampagne verschieben.</li>
+      
+      <li><strong>Google Ads:</strong> 3 Keywords ohne Conversion verbrennen ~18,90 € (z. B. „pilates günstig“). Als negativ ausschließen.</li>
+      
+      <li><strong>Google Ads:</strong> „Search – Reformer Schöneberg“ läuft mit ROAS 4,2 sehr gut — Budget erhöhen.</li>
+      
+      <li><strong>SEO-Fortschritt:</strong> „reformer pilates berlin“ steht auf Position 6.2 bei 620 Impressionen — mit eigener Landingpage + internen Links auf Seite 1 bringen.</li>
+      
+    </ul>
+  </div>
+  
+
+  
+  <div class="card">
+    <h2><span class="t">📈 Trends</span></h2>
+    <div class="metrics">
+      
+      <div class="metric" style="min-width:180px;">
+        <div class="k">SEO-Klicks</div>
+        <div class="v">233</div>
+        <svg class="spark" width="170" height="32" viewBox="0 0 170 32"><polyline fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="2.0,25.2 14.8,18.7 27.5,13.0 40.3,8.5 53.1,5.4 65.8,4.0 78.6,4.6 91.4,7.1 104.2,10.8 116.9,15.3 129.7,19.8 142.5,24.3 155.2,27.7 168.0,30.0"/><circle cx="168.0" cy="30.0" r="2.6" fill="var(--accent)"/></svg>
+      </div>
+      
+      <div class="metric" style="min-width:180px;">
+        <div class="k">Buchungen (Zeitraum)</div>
+        <div class="v">136</div>
+        <svg class="spark" width="170" height="32" viewBox="0 0 170 32"><polyline fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="2.0,25.9 14.8,16.3 27.5,9.5 40.3,5.4 53.1,5.4 65.8,9.5 78.6,14.9 91.4,21.8 104.2,27.3 116.9,30.0 129.7,28.6 142.5,21.8 155.2,13.6 168.0,4.0"/><circle cx="168.0" cy="4.0" r="2.6" fill="var(--accent)"/></svg>
+      </div>
+      
+      <div class="metric" style="min-width:180px;">
+        <div class="k">Ads-Klicks</div>
+        <div class="v">28</div>
+        <svg class="spark" width="170" height="32" viewBox="0 0 170 32"><polyline fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" points="2.0,17.0 14.8,12.1 27.5,7.2 40.3,5.6 53.1,4.0 65.8,5.6 78.6,8.9 91.4,12.1 104.2,17.0 116.9,23.5 129.7,26.8 142.5,30.0 155.2,30.0 168.0,28.4"/><circle cx="168.0" cy="28.4" r="2.6" fill="var(--accent)"/></svg>
+      </div>
+      
+    </div>
+  </div>
+  
+
+  
+  <div class="card">
+    <h2>
+      <span class="t">✅ Website &amp; Fehler</span>
+      <span class="badge st-ok">OK</span>
+    </h2>
+    <p class="summary">Alle 4 Seiten erreichbar und schnell.</p>
+
+    
+    
+
+    
+    
+    <div class="metrics">
+      
+      <div class="metric"><div class="k">geprüfte seiten</div><div class="v">4</div></div>
+      
+      <div class="metric"><div class="k">tote links</div><div class="v">0</div></div>
+      
+      <div class="metric"><div class="k">seo probleme</div><div class="v">1</div></div>
+      
+    </div>
+    
+
+    
+    
+
+    
+    
+    <div class="scroll"><table>
+      <tr><th>page</th><th>url</th><th>http</th><th>load_seconds</th><th>status</th></tr>
+      
+      <tr class="row-ok">
+        <td>Startseite</td><td>/</td><td>200</td><td>0.9</td><td>ok</td>
+      </tr>
+      
+      <tr class="row-ok">
+        <td>Kurse</td><td>/kurse</td><td>200</td><td>1.4</td><td>ok</td>
+      </tr>
+      
+      <tr class="row-ok">
+        <td>Preise</td><td>/preise</td><td>200</td><td>1.1</td><td>ok</td>
+      </tr>
+      
+      <tr class="row-ok">
+        <td>Kontakt</td><td>/kontakt</td><td>200</td><td>0.8</td><td>ok</td>
+      </tr>
+      
+    </table></div>
+    
+
+    
+    <ul class="sugg">
+      <li>On-Page: Startseite: Meta-Description zu lang (182 Zeichen) — Ziel ≤ 160.</li>
+    </ul>
+    
+  </div>
+  
+  <div class="card">
+    <h2>
+      <span class="t">✅ Buchungsprozess</span>
+      <span class="badge st-ok">OK</span>
+    </h2>
+    <p class="summary">Buchungsprozess vollständig durchlaufbar.</p>
+
+    
+    
+
+    
+    
+    <div class="metrics">
+      
+      <div class="metric"><div class="k">schritte gesamt</div><div class="v">4</div></div>
+      
+      <div class="metric"><div class="k">schritte ok</div><div class="v">4</div></div>
+      
+      <div class="metric"><div class="k">js fehler</div><div class="v">0</div></div>
+      
+      <div class="metric"><div class="k">server fehler requests</div><div class="v">0</div></div>
+      
+    </div>
+    
+
+    
+    
+
+    
+    
+    <div class="scroll"><table>
+      <tr><th>step</th><th>description</th><th>action</th><th>status</th></tr>
+      
+      <tr class="row-ok">
+        <td>1</td><td>Buchungsseite öffnen</td><td>goto</td><td>ok</td>
+      </tr>
+      
+      <tr class="row-ok">
+        <td>2</td><td>Kursliste wird angezeigt</td><td>expect_visible</td><td>ok</td>
+      </tr>
+      
+      <tr class="row-ok">
+        <td>3</td><td>Ersten Kurs anklicken</td><td>click_first</td><td>ok</td>
+      </tr>
+      
+      <tr class="row-ok">
+        <td>4</td><td>Terminauswahl erscheint</td><td>expect_visible</td><td>ok</td>
+      </tr>
+      
+    </table></div>
+    
+
+    
+  </div>
+  
+  <div class="card">
+    <h2>
+      <span class="t">ℹ️ Kursbuchungen &amp; Kursplan</span>
+      <span class="badge st-info">Info</span>
+    </h2>
+    <p class="summary">142 Buchungen in 30 Tagen, 3 stark / 2 schwach ausgelastete Slots.</p>
+
+    
+    
+
+    
+    
+    <div class="metrics">
+      
+      <div class="metric"><div class="k">buchungen zeitraum</div><div class="v">914</div></div>
+      
+      <div class="metric"><div class="k">zeitraum tage</div><div class="v">30</div></div>
+      
+      <div class="metric"><div class="k">aktive kurse</div><div class="v">4</div></div>
+      
+      <div class="metric"><div class="k">beliebtester kurs</div><div class="v">Reformer Basics</div></div>
+      
+    </div>
+    
+
+    
+    
+      
+      <div class="scroll"><table class="heat">
+        <tr><th></th><th>07</th><th>08</th><th>09</th><th>12</th><th>17</th><th>18</th><th>19</th></tr>
+        
+        <tr><th>Mo</th>
+          
+            <td style="background: rgba(194,24,91,0.78); color:#ffffff">78%</td>
+          
+            <td style="background: rgba(194,24,91,0.91); color:#ffffff">91%</td>
+          
+            <td style="background: rgba(194,24,91,0.66); color:#ffffff">66%</td>
+          
+            <td style="background: rgba(194,24,91,0.28); color:inherit">28%</td>
+          
+            <td style="background: rgba(194,24,91,0.91); color:#ffffff">91%</td>
+          
+            <td style="background: rgba(194,24,91,0.78); color:#ffffff">78%</td>
+          
+            <td style="background: rgba(194,24,91,0.53); color:inherit">53%</td>
+          
+        </tr>
+        
+        <tr><th>Di</th>
+          
+            <td style="background: rgba(194,24,91,0.78); color:#ffffff">78%</td>
+          
+            <td style="background: rgba(194,24,91,0.91); color:#ffffff">91%</td>
+          
+            <td style="background: rgba(194,24,91,0.66); color:#ffffff">66%</td>
+          
+            <td style="background: rgba(194,24,91,0.28); color:inherit">28%</td>
+          
+            <td style="background: rgba(194,24,91,0.91); color:#ffffff">91%</td>
+          
+            <td style="background: rgba(194,24,91,0.78); color:#ffffff">78%</td>
+          
+            <td style="background: rgba(194,24,91,0.53); color:inherit">53%</td>
+          
+        </tr>
+        
+        <tr><th>Mi</th>
+          
+            <td style="background: rgba(194,24,91,0.78); color:#ffffff">78%</td>
+          
+            <td style="background: rgba(194,24,91,0.91); color:#ffffff">91%</td>
+          
+            <td style="background: rgba(194,24,91,0.66); color:#ffffff">66%</td>
+          
+            <td style="background: rgba(194,24,91,0.28); color:inherit">28%</td>
+          
+            <td style="background: rgba(194,24,91,0.91); color:#ffffff">91%</td>
+          
+            <td style="background: rgba(194,24,91,0.78); color:#ffffff">78%</td>
+          
+            <td style="background: rgba(194,24,91,0.53); color:inherit">53%</td>
+          
+        </tr>
+        
+        <tr><th>Do</th>
+          
+            <td style="background: rgba(194,24,91,0.78); color:#ffffff">78%</td>
+          
+            <td style="background: rgba(194,24,91,0.91); color:#ffffff">91%</td>
+          
+            <td style="background: rgba(194,24,91,0.66); color:#ffffff">66%</td>
+          
+            <td style="background: rgba(194,24,91,0.28); color:inherit">28%</td>
+          
+            <td style="background: rgba(194,24,91,0.91); color:#ffffff">91%</td>
+          
+            <td style="background: rgba(194,24,91,0.78); color:#ffffff">78%</td>
+          
+            <td style="background: rgba(194,24,91,0.53); color:inherit">53%</td>
+          
+        </tr>
+        
+        <tr><th>Fr</th>
+          
+            <td style="background: rgba(194,24,91,0.78); color:#ffffff">78%</td>
+          
+            <td style="background: rgba(194,24,91,0.91); color:#ffffff">91%</td>
+          
+            <td style="background: rgba(194,24,91,0.66); color:#ffffff">66%</td>
+          
+            <td style="background: rgba(194,24,91,0.28); color:inherit">28%</td>
+          
+            <td style="background: rgba(194,24,91,0.91); color:#ffffff">91%</td>
+          
+            <td style="background: rgba(194,24,91,0.78); color:#ffffff">78%</td>
+          
+            <td style="background: rgba(194,24,91,0.53); color:inherit">53%</td>
+          
+        </tr>
+        
+        <tr><th>Sa</th>
+          
+            <td style="background: rgba(194,24,91,0.91); color:#ffffff">91%</td>
+          
+            <td style="background: rgba(194,24,91,0.91); color:#ffffff">91%</td>
+          
+            <td style="background: rgba(194,24,91,0.78); color:#ffffff">78%</td>
+          
+            <td style="background: rgba(194,24,91,0.28); color:inherit">28%</td>
+          
+            <td style="background: rgba(194,24,91,0.66); color:#ffffff">66%</td>
+          
+            <td style="background: rgba(194,24,91,0.53); color:inherit">53%</td>
+          
+            <td style="background: rgba(194,24,91,0.28); color:inherit">28%</td>
+          
+        </tr>
+        
+        <tr><th>So</th>
+          
+            <td style="color:var(--muted)">·</td>
+            
+          
+            <td style="color:var(--muted)">·</td>
+            
+          
+            <td style="color:var(--muted)">·</td>
+            
+          
+            <td style="color:var(--muted)">·</td>
+            
+          
+            <td style="color:var(--muted)">·</td>
+            
+          
+            <td style="color:var(--muted)">·</td>
+            
+          
+            <td style="color:var(--muted)">·</td>
+            
+          
+        </tr>
+        
+      </table></div>
+      <p class="sub" style="margin-top:8px">Auslastung je Zeitfenster (Wochentag × Uhrzeit)</p>
+    
+
+    
+    
+    <div class="scroll"><table>
+      <tr><th>zeit</th><th>kurs</th><th>teilnehmer</th><th>status</th></tr>
+      
+      <tr class="row-CONFIRMED">
+        <td>Mo 28.07. 07:00</td><td>Reformer Basics</td><td>8</td><td>CONFIRMED</td>
+      </tr>
+      
+      <tr class="row-CONFIRMED">
+        <td>Mo 28.07. 18:00</td><td>Reformer Flow</td><td>7</td><td>CONFIRMED</td>
+      </tr>
+      
+      <tr class="row-CONFIRMED">
+        <td>Di 29.07. 08:00</td><td>Power Pilates</td><td>8</td><td>CONFIRMED</td>
+      </tr>
+      
+      <tr class="row-CONFIRMED">
+        <td>Di 29.07. 12:00</td><td>Stretch &amp; Relax</td><td>3</td><td>CONFIRMED</td>
+      </tr>
+      
+      <tr class="row-CONFIRMED">
+        <td>Mi 30.07. 17:00</td><td>Reformer Flow</td><td>8</td><td>CONFIRMED</td>
+      </tr>
+      
+    </table></div>
+    
+
+    
+    <ul class="sugg">
+      <li>Mo 07:00 &amp; Di 08:00 sind ausgebucht (100 %). Zusätzlichen Frühkurs oder zweiten Reformer-Slot anbieten.</li><li>Di 12:00 ist schwach ausgelastet (~38 %). Mittags-Slot testweise streichen oder als Business-Lunch-Kurs (30 Min.) neu positionieren.</li><li>Abendfenster 17–19 Uhr trägt das Geschäft — Kernangebot dort absichern und Wartelisten aktiv nachbesetzen.</li>
+    </ul>
+    
+  </div>
+  
+  <div class="card">
+    <h2>
+      <span class="t">⚠️ Google Ads</span>
+      <span class="badge st-warning">Achtung</span>
+    </h2>
+    <p class="summary">82,40 € Ausgaben, 3.0 Conversions, CPA 27,47 €.</p>
+
+    
+    
+
+    
+    
+    <div class="metrics">
+      
+      <div class="metric"><div class="k">kosten</div><div class="v">82,40 €</div></div>
+      
+      <div class="metric"><div class="k">conversions</div><div class="v">3.0</div></div>
+      
+      <div class="metric"><div class="k">klicks</div><div class="v">41</div></div>
+      
+      <div class="metric"><div class="k">impressionen</div><div class="v">2380</div></div>
+      
+      <div class="metric"><div class="k">ctr</div><div class="v">1,72%</div></div>
+      
+      <div class="metric"><div class="k">cpa</div><div class="v">27,47 €</div></div>
+      
+      <div class="metric"><div class="k">verschwendetes budget</div><div class="v">18,90 €</div></div>
+      
+    </div>
+    
+
+    
+    
+
+    
+    
+    <div class="scroll"><table>
+      <tr><th>kampagne</th><th>kosten</th><th>klicks</th><th>ctr</th><th>conv</th><th>cpa</th><th>roas</th></tr>
+      
+      <tr class="row-">
+        <td>Search – Pilates Berlin</td><td>51,20 €</td><td>24</td><td>2,10%</td><td>2.0</td><td>25,60 €</td><td>3,1</td>
+      </tr>
+      
+      <tr class="row-">
+        <td>Search – Reformer Schöneberg</td><td>18,30 €</td><td>11</td><td>1,80%</td><td>1.0</td><td>18,30 €</td><td>4,2</td>
+      </tr>
+      
+      <tr class="row-">
+        <td>Display – Retargeting</td><td>12,90 €</td><td>6</td><td>0,60%</td><td>0.0</td><td>—</td><td>—</td>
+      </tr>
+      
+    </table></div>
+    
+
+    
+    <ul class="sugg">
+      <li>Kampagne „Display – Retargeting“ hat niedrige CTR (0,60 %) und 0 Conversions. Creatives erneuern oder Budget in die Search-Kampagne verschieben.</li><li>3 Keywords ohne Conversion verbrennen ~18,90 € (z. B. „pilates günstig“). Als negativ ausschließen.</li><li>„Search – Reformer Schöneberg“ läuft mit ROAS 4,2 sehr gut — Budget erhöhen.</li>
+    </ul>
+    
+  </div>
+  
+  <div class="card">
+    <h2>
+      <span class="t">ℹ️ SEO-Fortschritt</span>
+      <span class="badge st-info">Info</span>
+    </h2>
+    <p class="summary">312 Klicks (▲ 14%), Ø-Position 8.6, 5 Keyword-Chancen.</p>
+
+    
+    
+
+    
+    
+    <div class="metrics">
+      
+      <div class="metric"><div class="k">klicks</div><div class="v">312</div></div>
+      
+      <div class="metric"><div class="k">klicks trend</div><div class="v">▲ 14%</div></div>
+      
+      <div class="metric"><div class="k">impressionen</div><div class="v">9840</div></div>
+      
+      <div class="metric"><div class="k">impressionen trend</div><div class="v">▲ 9%</div></div>
+      
+      <div class="metric"><div class="k">ctr</div><div class="v">3,17%</div></div>
+      
+      <div class="metric"><div class="k">ø position</div><div class="v">8.6</div></div>
+      
+      <div class="metric"><div class="k">position trend</div><div class="v">▲ 6%</div></div>
+      
+      <div class="metric"><div class="k">chancen keywords</div><div class="v">5</div></div>
+      
+    </div>
+    
+
+    
+    
+
+    
+    
+    <div class="scroll"><table>
+      <tr><th>typ</th><th>keyword</th><th>position</th><th>impressionen</th><th>klicks</th></tr>
+      
+      <tr class="row-">
+        <td>Chance</td><td>reformer pilates berlin</td><td>6.2</td><td>620</td><td>28</td>
+      </tr>
+      
+      <tr class="row-">
+        <td>Chance</td><td>pilates schöneberg</td><td>7.8</td><td>410</td><td>15</td>
+      </tr>
+      
+      <tr class="row-">
+        <td>Chance</td><td>pilates studio frauen berlin</td><td>11.4</td><td>180</td><td>4</td>
+      </tr>
+      
+    </table></div>
+    
+
+    
+    <ul class="sugg">
+      <li>„reformer pilates berlin“ steht auf Position 6.2 bei 620 Impressionen — mit eigener Landingpage + internen Links auf Seite 1 bringen.</li><li>„pilates schöneberg“ (Pos. 7.8): lokalen Content + Google-Business-Profil stärken (Standort, Öffnungszeiten, Bewertungen).</li><li>Durchschnittsposition verbessert sich (9.1 → 8.6). Kurs beibehalten. 👍</li>
+    </ul>
+    
+  </div>
+  
+
+  <footer>
+    Automatisch erzeugt vom WeLovePilates Monitor · 2026-07-27T08:08:12.311775+00:00
+  </footer>
+</div>
+</body>
+</html>

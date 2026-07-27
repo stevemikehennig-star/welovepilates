@@ -1,0 +1,135 @@
+# ============================================================================
+# WeLovePilates Monitor — nicht-geheime Konfiguration
+# ============================================================================
+# Geheime Zugangsdaten (API-Keys, Tokens, Passwörter) gehören NICHT hier rein,
+# sondern in Umgebungsvariablen / GitHub Secrets (siehe .env.example & SETUP.md).
+# ============================================================================
+
+site:
+  # Öffentliche Basis-URL der Seite
+  base_url: "https://www.welovepilates.de"
+  # Zeitzone für Reports & Kursauswertung
+  timezone: "Europe/Berlin"
+  # Sprache der Reports
+  language: "de"
+
+# ----------------------------------------------------------------------------
+# Website- & Fehler-Monitoring
+# ----------------------------------------------------------------------------
+uptime:
+  # Seiten, die regelmäßig auf Erreichbarkeit & Fehler geprüft werden.
+  # "check_seo" = zusätzlich On-Page-SEO-Basics prüfen (Title, Meta, H1 ...).
+  pages:
+    - path: "/"
+      name: "Startseite"
+      check_seo: true
+    - path: "/kurse"
+      name: "Kurse"
+      check_seo: true
+    - path: "/preise"
+      name: "Preise"
+      check_seo: true
+    - path: "/kontakt"
+      name: "Kontakt"
+      check_seo: false
+  # HTTP-Timeout in Sekunden
+  timeout_seconds: 20
+  # Ab welcher Ladezeit (Sekunden) wird gewarnt
+  slow_threshold_seconds: 4.0
+  # Auf tote Links prüfen (nur interne Links werden verfolgt)
+  check_broken_links: true
+  max_links_to_check: 40
+
+# ----------------------------------------------------------------------------
+# Buchungs-Flow (das Wichtigste!) — synthetischer Test mit Playwright
+# ----------------------------------------------------------------------------
+booking_flow:
+  enabled: true
+  # Startseite des Buchungswidgets (Wix Bookings). Bitte an echte URL anpassen.
+  start_url: "https://www.welovepilates.de/buchen"
+  # Der Test simuliert die Schritte bis KURZ VOR der echten Buchung/Bezahlung
+  # (es wird NICHT wirklich gebucht). Reihenfolge = Ablauf.
+  steps:
+    - action: "goto"
+      target: "start_url"
+      description: "Buchungsseite öffnen"
+    - action: "expect_visible"
+      selector: "text=/Kurs|Class|Termin|buchen/i"
+      description: "Kursliste/Kalender wird angezeigt"
+    - action: "click_first"
+      selector: "[data-hook*='book'], button:has-text('Buchen'), a:has-text('Buchen')"
+      description: "Ersten buchbaren Kurs anklicken"
+    - action: "expect_visible"
+      selector: "text=/Termin|Uhr|:[0-9]{2}|slot/i"
+      description: "Terminauswahl / Slots erscheinen"
+  # Wenn einer dieser Schritte fehlschlägt -> Buchung gilt als GESTÖRT (Alarm)
+  screenshot_on_failure: true
+
+# ----------------------------------------------------------------------------
+# Google Ads — tägliche Auswertung
+# ----------------------------------------------------------------------------
+google_ads:
+  enabled: true
+  # Zeitraum für die tägliche Auswertung
+  lookback_days: 1
+  # Vergleichszeitraum (für Trend / "besser oder schlechter als")
+  comparison_days: 7
+  # Schwellwerte für automatische Vorschläge
+  thresholds:
+    # Kampagnen mit CPA über diesem Wert (EUR) werden markiert
+    high_cpa_eur: 50
+    # Anzeigen/Keywords mit CTR unter diesem Wert (%) werden markiert
+    low_ctr_pct: 1.5
+    # Verlorener Impression-Share (Budget) über diesem Wert (%) = Budget-Limit
+    budget_lost_is_pct: 10
+    # Keyword-Kosten ohne Conversion über diesem Wert (EUR) = Verschwendung
+    wasted_spend_eur: 15
+
+# ----------------------------------------------------------------------------
+# SEO — Google Search Console
+# ----------------------------------------------------------------------------
+seo:
+  enabled: true
+  # In GSC verifizierte Property (Domain- oder URL-Property)
+  # z.B. "sc-domain:welovepilates.de"  ODER  "https://www.welovepilates.de/"
+  search_console_property: "sc-domain:welovepilates.de"
+  lookback_days: 28
+  # Positions-Fenster für "fast auf Seite 1" (großes Potenzial)
+  striking_distance:
+    min_position: 4.0
+    max_position: 15.0
+    min_impressions: 30
+  # Seiten mit vielen Impressionen aber schlechter CTR = Titel/Meta optimieren
+  low_ctr:
+    min_impressions: 100
+    max_ctr_pct: 1.5
+
+# ----------------------------------------------------------------------------
+# Wix Bookings — Kursbuchungs-Auswertung & Kursplan-Optimierung
+# ----------------------------------------------------------------------------
+bookings:
+  enabled: true
+  lookback_days: 1
+  # Zusätzlich für die Kursplan-Optimierung längeren Zeitraum auswerten
+  optimizer_lookback_days: 30
+  # Angenommene maximale Teilnehmerzahl pro Kurs (Studio: max. 8)
+  default_capacity: 8
+  # Auslastung über diesem Wert (%) = Slot ausbauen / zusätzliche Kurse
+  high_demand_pct: 85
+  # Auslastung unter diesem Wert (%) = Slot überdenken / zusammenlegen
+  low_demand_pct: 40
+
+# ----------------------------------------------------------------------------
+# Reporting
+# ----------------------------------------------------------------------------
+reporting:
+  email:
+    enabled: true
+    to: "stevemikehennig@gmail.com"
+    subject_prefix: "[WeLovePilates Monitor]"
+  dashboard:
+    enabled: true
+    # Ausgabeordner für GitHub Pages
+    output_dir: "docs"
+    # Wie viele Tage Historie im Dashboard anzeigen
+    history_days: 30
