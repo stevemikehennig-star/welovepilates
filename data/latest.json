@@ -1,0 +1,161 @@
+{
+  "date": "2026-07-28",
+  "generated_at": "2026-07-28T12:19:10.907853+00:00",
+  "site": "https://www.welovepilates.de",
+  "overall_status": "error",
+  "sections": [
+    {
+      "key": "uptime",
+      "title": "Website & Fehler",
+      "status": "error",
+      "summary": "2 Seite(n) mit Fehler, 0 tote Links.",
+      "metrics": {
+        "geprüfte_seiten": 4,
+        "tote_links": 0,
+        "seo_probleme": 2
+      },
+      "items": [
+        {
+          "page": "Startseite",
+          "url": "https://www.welovepilates.de/",
+          "http": 200,
+          "load_seconds": 3.35,
+          "status": "ok",
+          "seo_issues": [
+            "Title zu lang (68 Zeichen) — wird abgeschnitten.",
+            "Mehrere H1-Überschriften (5) — idealerweise genau eine."
+          ],
+          "seo_metrics": {
+            "title_len": 68,
+            "meta_description_len": 147,
+            "h1_count": 5,
+            "images": 77,
+            "images_without_alt": 0
+          }
+        },
+        {
+          "page": "Kurse",
+          "url": "https://www.welovepilates.de/kurse",
+          "http": 404,
+          "load_seconds": 0.18,
+          "status": "error",
+          "detail": "Seite liefert HTTP 404"
+        },
+        {
+          "page": "Preise",
+          "url": "https://www.welovepilates.de/preise",
+          "http": 404,
+          "load_seconds": 0.16,
+          "status": "error",
+          "detail": "Seite liefert HTTP 404"
+        },
+        {
+          "page": "Kontakt",
+          "url": "https://www.welovepilates.de/kontakt",
+          "http": 200,
+          "load_seconds": 0.23,
+          "status": "ok"
+        }
+      ],
+      "suggestions": [
+        "On-Page: Startseite: Title zu lang (68 Zeichen) — wird abgeschnitten.",
+        "On-Page: Startseite: Mehrere H1-Überschriften (5) — idealerweise genau eine."
+      ],
+      "setup_hint": "",
+      "error_detail": ""
+    },
+    {
+      "key": "booking_flow",
+      "title": "Buchungsprozess",
+      "status": "error",
+      "summary": "BUCHUNG GESTÖRT bei Schritt 2: Kursliste/Kalender wird angezeigt.",
+      "metrics": {
+        "schritte_gesamt": 4,
+        "schritte_ok": 1,
+        "js_fehler": 1,
+        "server_fehler_requests": 0,
+        "js_errors_list": [
+          "Failed to load resource: the server responded with a status of 404 ()"
+        ],
+        "screenshot": "docs/assets/booking/failure-2026-07-28.png"
+      },
+      "items": [
+        {
+          "step": 1,
+          "description": "Buchungsseite öffnen",
+          "action": "goto",
+          "status": "ok"
+        },
+        {
+          "step": 2,
+          "description": "Kursliste/Kalender wird angezeigt",
+          "action": "expect_visible",
+          "status": "error",
+          "detail": "Element/Schritt nicht innerhalb des Timeouts erreichbar."
+        }
+      ],
+      "suggestions": [
+        "Buchungswidget dringend manuell prüfen — Kunden können evtl. nicht buchen!",
+        "Screenshot des Fehlers: docs/assets/booking/failure-2026-07-28.png",
+        "1 JavaScript-Fehler im Buchungs-Widget prüfen (siehe Details)."
+      ],
+      "setup_hint": "",
+      "error_detail": ""
+    },
+    {
+      "key": "bookings",
+      "title": "Kursbuchungen & Kursplan",
+      "status": "not_configured",
+      "summary": "Noch nicht eingerichtet — siehe SETUP.md.",
+      "metrics": {},
+      "items": [],
+      "suggestions": [],
+      "setup_hint": "Wix Bookings anbinden: im Wix-Konto einen API-Key erstellen (API Keys Manager) und API-Key + Site-ID als Secrets WIX_API_KEY / WIX_SITE_ID hinterlegen. Details in SETUP.md.",
+      "error_detail": ""
+    },
+    {
+      "key": "google_ads",
+      "title": "Google Ads",
+      "status": "not_configured",
+      "summary": "Noch nicht eingerichtet — siehe SETUP.md.",
+      "metrics": {},
+      "items": [],
+      "suggestions": [],
+      "setup_hint": "Google Ads API einrichten: Developer-Token beantragen, OAuth-Client anlegen, Refresh-Token generieren und als GitHub Secrets hinterlegen (GOOGLE_ADS_*). Details in SETUP.md.",
+      "error_detail": ""
+    },
+    {
+      "key": "seo",
+      "title": "SEO-Fortschritt",
+      "status": "not_configured",
+      "summary": "Noch nicht eingerichtet — siehe SETUP.md.",
+      "metrics": {},
+      "items": [],
+      "suggestions": [],
+      "setup_hint": "Search Console anbinden: Service-Account anlegen, dessen JSON als Secret GOOGLE_SERVICE_ACCOUNT_JSON hinterlegen und den Service-Account in der Search Console als Nutzer der Property hinzufügen. Details in SETUP.md.",
+      "error_detail": ""
+    }
+  ],
+  "suggestions": [
+    {
+      "bereich": "Website & Fehler",
+      "vorschlag": "On-Page: Startseite: Title zu lang (68 Zeichen) — wird abgeschnitten."
+    },
+    {
+      "bereich": "Website & Fehler",
+      "vorschlag": "On-Page: Startseite: Mehrere H1-Überschriften (5) — idealerweise genau eine."
+    },
+    {
+      "bereich": "Buchungsprozess",
+      "vorschlag": "Buchungswidget dringend manuell prüfen — Kunden können evtl. nicht buchen!"
+    },
+    {
+      "bereich": "Buchungsprozess",
+      "vorschlag": "Screenshot des Fehlers: docs/assets/booking/failure-2026-07-28.png"
+    },
+    {
+      "bereich": "Buchungsprozess",
+      "vorschlag": "1 JavaScript-Fehler im Buchungs-Widget prüfen (siehe Details)."
+    }
+  ]
+}
