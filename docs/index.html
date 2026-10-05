@@ -71,7 +71,7 @@
     <span class="badge st-error">🚨 Fehler</span>
   </header>
   <div class="sub">
-    Stand: 2026-10-04 · <a href="https://www.welovepilates.de">https://www.welovepilates.de</a>
+    Stand: 2026-10-05 · <a href="https://www.welovepilates.de">https://www.welovepilates.de</a>
      · Historie: 30 Tage
   </div>
 
@@ -82,13 +82,15 @@
     <h2><span class="t">🎯 Wichtigste Handlungsempfehlungen</span></h2>
     <ul class="sugg">
       
+      <li><strong>Website &amp; Fehler:</strong> On-Page: Startseite: Title zu lang (80 Zeichen) — wird abgeschnitten.</li>
+      
       <li><strong>Website &amp; Fehler:</strong> On-Page: Preise: Title zu lang (70 Zeichen) — wird abgeschnitten.</li>
       
       <li><strong>Website &amp; Fehler:</strong> On-Page: Preise: Meta-Description zu lang (168 Zeichen) — Ziel ≤ 160.</li>
       
       <li><strong>Buchungsprozess:</strong> Buchungswidget dringend manuell prüfen — Kunden können evtl. nicht buchen!</li>
       
-      <li><strong>Buchungsprozess:</strong> Screenshot des Fehlers: docs/assets/booking/failure-2026-10-04.png</li>
+      <li><strong>Buchungsprozess:</strong> Screenshot des Fehlers: docs/assets/booking/failure-2026-10-05.png</li>
       
       <li><strong>Buchungsprozess:</strong> 1 JavaScript-Fehler im Buchungs-Widget prüfen (siehe Details).</li>
       
@@ -101,10 +103,10 @@
   
   <div class="card">
     <h2>
-      <span class="t">🚨 Website &amp; Fehler</span>
-      <span class="badge st-error">Fehler</span>
+      <span class="t">✅ Website &amp; Fehler</span>
+      <span class="badge st-ok">OK</span>
     </h2>
-    <p class="summary">1 Seite(n) mit Fehler, 0 tote Links.</p>
+    <p class="summary">Alle 4 Seiten erreichbar und schnell.</p>
 
     
     
@@ -117,7 +119,7 @@
       
       <div class="metric"><div class="k">tote links</div><div class="v">0</div></div>
       
-      <div class="metric"><div class="k">seo probleme</div><div class="v">2</div></div>
+      <div class="metric"><div class="k">seo probleme</div><div class="v">3</div></div>
       
     </div>
     
@@ -128,22 +130,22 @@
     
     
     <div class="scroll"><table>
-      <tr><th>page</th><th>url</th><th>status</th><th>detail</th></tr>
+      <tr><th>page</th><th>url</th><th>http</th><th>load_seconds</th><th>status</th><th>seo_issues</th><th>seo_metrics</th></tr>
       
-      <tr class="row-error">
-        <td>Startseite</td><td>https://www.welovepilates.de/</td><td>error</td><td>Nicht erreichbar: HTTPSConnectionPool(host=&#39;www.welovepilates.de&#39;, port=443): Max retries exceeded with url: / (Caused by SSLError(SSLError(1, &#39;[SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1016)&#39;)))</td>
+      <tr class="row-ok">
+        <td>Startseite</td><td>https://www.welovepilates.de/</td><td>200</td><td>0.77</td><td>ok</td><td>[&#39;Title zu lang (80 Zeichen) — wird abgeschnitten.&#39;]</td><td>{&#39;title_len&#39;: 80, &#39;meta_description_len&#39;: 147, &#39;h1_count&#39;: 1, &#39;images&#39;: 17, &#39;images_without_alt&#39;: 0}</td>
       </tr>
       
       <tr class="row-ok">
-        <td>Kurse</td><td>https://www.welovepilates.de/kurse</td><td>ok</td><td></td>
+        <td>Kurse</td><td>https://www.welovepilates.de/kurse</td><td>200</td><td>0.94</td><td>ok</td><td>[]</td><td>{&#39;title_len&#39;: 24, &#39;meta_description_len&#39;: 135, &#39;h1_count&#39;: 1, &#39;images&#39;: 0, &#39;images_without_alt&#39;: 0}</td>
       </tr>
       
       <tr class="row-ok">
-        <td>Preise</td><td>https://www.welovepilates.de/preise</td><td>ok</td><td></td>
+        <td>Preise</td><td>https://www.welovepilates.de/preise</td><td>200</td><td>1.4</td><td>ok</td><td>[&#39;Title zu lang (70 Zeichen) — wird abgeschnitten.&#39;, &#39;Meta-Description zu lang (168 Zeichen) — Ziel ≤ 160.&#39;]</td><td>{&#39;title_len&#39;: 70, &#39;meta_description_len&#39;: 168, &#39;h1_count&#39;: 1, &#39;images&#39;: 0, &#39;images_without_alt&#39;: 0}</td>
       </tr>
       
       <tr class="row-ok">
-        <td>Kontakt</td><td>https://www.welovepilates.de/kontakt</td><td>ok</td><td></td>
+        <td>Kontakt</td><td>https://www.welovepilates.de/kontakt</td><td>200</td><td>0.74</td><td>ok</td><td></td><td></td>
       </tr>
       
     </table></div>
@@ -151,7 +153,7 @@
 
     
     <ul class="sugg">
-      <li>On-Page: Preise: Title zu lang (70 Zeichen) — wird abgeschnitten.</li><li>On-Page: Preise: Meta-Description zu lang (168 Zeichen) — Ziel ≤ 160.</li>
+      <li>On-Page: Startseite: Title zu lang (80 Zeichen) — wird abgeschnitten.</li><li>On-Page: Preise: Title zu lang (70 Zeichen) — wird abgeschnitten.</li><li>On-Page: Preise: Meta-Description zu lang (168 Zeichen) — Ziel ≤ 160.</li>
     </ul>
     
   </div>
@@ -178,7 +180,7 @@
       
       <div class="metric"><div class="k">server fehler requests</div><div class="v">0</div></div>
       
-      <div class="metric"><div class="k">screenshot</div><div class="v">docs/assets/booking/failure-2026-10-04.png</div></div>
+      <div class="metric"><div class="k">screenshot</div><div class="v">docs/assets/booking/failure-2026-10-05.png</div></div>
       
     </div>
     
@@ -208,7 +210,7 @@
 
     
     <ul class="sugg">
-      <li>Buchungswidget dringend manuell prüfen — Kunden können evtl. nicht buchen!</li><li>Screenshot des Fehlers: docs/assets/booking/failure-2026-10-04.png</li><li>1 JavaScript-Fehler im Buchungs-Widget prüfen (siehe Details).</li>
+      <li>Buchungswidget dringend manuell prüfen — Kunden können evtl. nicht buchen!</li><li>Screenshot des Fehlers: docs/assets/booking/failure-2026-10-05.png</li><li>1 JavaScript-Fehler im Buchungs-Widget prüfen (siehe Details).</li>
     </ul>
     
   </div>
@@ -287,7 +289,7 @@
   
 
   <footer>
-    Automatisch erzeugt vom WeLovePilates Monitor · 2026-10-04T11:02:51.822221+00:00
+    Automatisch erzeugt vom WeLovePilates Monitor · 2026-10-05T12:10:51.897550+00:00
   </footer>
 </div>
 </body>
