@@ -1,32 +1,25 @@
 {
-  "date": "2026-10-14",
-  "generated_at": "2026-10-14T10:02:13.396434+00:00",
+  "date": "2026-10-15",
+  "generated_at": "2026-10-15T09:43:26.559103+00:00",
   "site": "https://www.welovepilates.de",
   "overall_status": "error",
   "sections": [
     {
       "key": "uptime",
       "title": "Website & Fehler",
-      "status": "warning",
-      "summary": "Alle Seiten erreichbar, aber 0 langsam / 1 tote Links.",
+      "status": "ok",
+      "summary": "Alle 4 Seiten erreichbar und schnell.",
       "metrics": {
         "geprüfte_seiten": 4,
-        "tote_links": 1,
-        "seo_probleme": 3,
-        "broken_links_list": [
-          {
-            "url": "https://www.welovepilates.de/impressum/",
-            "http": "error",
-            "detail": "HTTPSConnectionPool(host='www.welovepilates.de', port=443): Read timed out. (read timeout=20)"
-          }
-        ]
+        "tote_links": 0,
+        "seo_probleme": 3
       },
       "items": [
         {
           "page": "Startseite",
           "url": "https://www.welovepilates.de/",
           "http": 200,
-          "load_seconds": 1.7,
+          "load_seconds": 0.95,
           "status": "ok",
           "seo_issues": [
             "Title zu lang (80 Zeichen) — wird abgeschnitten."
@@ -43,7 +36,7 @@
           "page": "Kurse",
           "url": "https://www.welovepilates.de/kurse",
           "http": 200,
-          "load_seconds": 2.05,
+          "load_seconds": 0.9,
           "status": "ok",
           "seo_issues": [],
           "seo_metrics": {
@@ -58,7 +51,7 @@
           "page": "Preise",
           "url": "https://www.welovepilates.de/preise",
           "http": 200,
-          "load_seconds": 1.1,
+          "load_seconds": 0.8,
           "status": "ok",
           "seo_issues": [
             "Title zu lang (70 Zeichen) — wird abgeschnitten.",
@@ -76,15 +69,14 @@
           "page": "Kontakt",
           "url": "https://www.welovepilates.de/kontakt",
           "http": 200,
-          "load_seconds": 1.22,
+          "load_seconds": 0.65,
           "status": "ok"
         }
       ],
       "suggestions": [
         "On-Page: Startseite: Title zu lang (80 Zeichen) — wird abgeschnitten.",
         "On-Page: Preise: Title zu lang (70 Zeichen) — wird abgeschnitten.",
-        "On-Page: Preise: Meta-Description zu lang (168 Zeichen) — Ziel ≤ 160.",
-        "Toten Link reparieren/entfernen: https://www.welovepilates.de/impressum/ (HTTP error)"
+        "On-Page: Preise: Meta-Description zu lang (168 Zeichen) — Ziel ≤ 160."
       ],
       "setup_hint": "",
       "error_detail": ""
@@ -102,7 +94,7 @@
         "js_errors_list": [
           "Failed to load resource: the server responded with a status of 404 ()"
         ],
-        "screenshot": "docs/assets/booking/failure-2026-10-14.png"
+        "screenshot": "docs/assets/booking/failure-2026-10-15.png"
       },
       "items": [
         {
@@ -127,7 +119,7 @@
       ],
       "suggestions": [
         "Buchungswidget dringend manuell prüfen — Kunden können evtl. nicht buchen!",
-        "Screenshot des Fehlers: docs/assets/booking/failure-2026-10-14.png",
+        "Screenshot des Fehlers: docs/assets/booking/failure-2026-10-15.png",
         "1 JavaScript-Fehler im Buchungs-Widget prüfen (siehe Details)."
       ],
       "setup_hint": "",
@@ -181,16 +173,12 @@
       "vorschlag": "On-Page: Preise: Meta-Description zu lang (168 Zeichen) — Ziel ≤ 160."
     },
     {
-      "bereich": "Website & Fehler",
-      "vorschlag": "Toten Link reparieren/entfernen: https://www.welovepilates.de/impressum/ (HTTP error)"
-    },
-    {
       "bereich": "Buchungsprozess",
       "vorschlag": "Buchungswidget dringend manuell prüfen — Kunden können evtl. nicht buchen!"
     },
     {
       "bereich": "Buchungsprozess",
-      "vorschlag": "Screenshot des Fehlers: docs/assets/booking/failure-2026-10-14.png"
+      "vorschlag": "Screenshot des Fehlers: docs/assets/booking/failure-2026-10-15.png"
     },
     {
       "bereich": "Buchungsprozess",
