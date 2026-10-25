@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-24",
-  "generated_at": "2026-10-24T09:23:35.841574+00:00",
+  "date": "2026-10-25",
+  "generated_at": "2026-10-25T09:41:47.709376+00:00",
   "site": "https://www.welovepilates.de",
   "overall_status": "error",
   "sections": [
@@ -19,7 +19,7 @@
           "page": "Startseite",
           "url": "https://www.welovepilates.de/",
           "http": 200,
-          "load_seconds": 0.86,
+          "load_seconds": 1.12,
           "status": "ok",
           "seo_issues": [
             "Title zu lang (80 Zeichen) — wird abgeschnitten."
@@ -36,7 +36,7 @@
           "page": "Kurse",
           "url": "https://www.welovepilates.de/kurse",
           "http": 200,
-          "load_seconds": 1.08,
+          "load_seconds": 1.36,
           "status": "ok",
           "seo_issues": [],
           "seo_metrics": {
@@ -51,7 +51,7 @@
           "page": "Preise",
           "url": "https://www.welovepilates.de/preise",
           "http": 200,
-          "load_seconds": 1.28,
+          "load_seconds": 0.86,
           "status": "ok",
           "seo_issues": [
             "Title zu lang (70 Zeichen) — wird abgeschnitten.",
@@ -69,7 +69,7 @@
           "page": "Kontakt",
           "url": "https://www.welovepilates.de/kontakt",
           "http": 200,
-          "load_seconds": 0.96,
+          "load_seconds": 0.86,
           "status": "ok"
         }
       ],
@@ -94,7 +94,7 @@
         "js_errors_list": [
           "Failed to load resource: the server responded with a status of 404 ()"
         ],
-        "screenshot": "docs/assets/booking/failure-2026-10-24.png"
+        "screenshot": "docs/assets/booking/failure-2026-10-25.png"
       },
       "items": [
         {
@@ -119,7 +119,7 @@
       ],
       "suggestions": [
         "Buchungswidget dringend manuell prüfen — Kunden können evtl. nicht buchen!",
-        "Screenshot des Fehlers: docs/assets/booking/failure-2026-10-24.png",
+        "Screenshot des Fehlers: docs/assets/booking/failure-2026-10-25.png",
         "1 JavaScript-Fehler im Buchungs-Widget prüfen (siehe Details)."
       ],
       "setup_hint": "",
@@ -178,7 +178,7 @@
     },
     {
       "bereich": "Buchungsprozess",
-      "vorschlag": "Screenshot des Fehlers: docs/assets/booking/failure-2026-10-24.png"
+      "vorschlag": "Screenshot des Fehlers: docs/assets/booking/failure-2026-10-25.png"
     },
     {
       "bereich": "Buchungsprozess",
