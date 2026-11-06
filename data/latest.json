@@ -1,6 +1,6 @@
 {
-  "date": "2026-11-05",
-  "generated_at": "2026-11-05T13:00:47.517997+00:00",
+  "date": "2026-11-06",
+  "generated_at": "2026-11-06T12:49:09.564856+00:00",
   "site": "https://www.welovepilates.de",
   "overall_status": "error",
   "sections": [
@@ -19,13 +19,13 @@
           "page": "Startseite",
           "url": "https://www.welovepilates.de/",
           "http": 200,
-          "load_seconds": 0.7,
+          "load_seconds": 0.94,
           "status": "ok",
           "seo_issues": [
-            "Title zu lang (80 Zeichen) — wird abgeschnitten."
+            "Title zu lang (78 Zeichen) — wird abgeschnitten."
           ],
           "seo_metrics": {
-            "title_len": 80,
+            "title_len": 78,
             "meta_description_len": 147,
             "h1_count": 1,
             "images": 17,
@@ -36,7 +36,7 @@
           "page": "Kurse",
           "url": "https://www.welovepilates.de/kurse",
           "http": 200,
-          "load_seconds": 1.06,
+          "load_seconds": 0.88,
           "status": "ok",
           "seo_issues": [],
           "seo_metrics": {
@@ -51,7 +51,7 @@
           "page": "Preise",
           "url": "https://www.welovepilates.de/preise",
           "http": 200,
-          "load_seconds": 0.61,
+          "load_seconds": 0.72,
           "status": "ok",
           "seo_issues": [
             "Title zu lang (70 Zeichen) — wird abgeschnitten.",
@@ -69,12 +69,12 @@
           "page": "Kontakt",
           "url": "https://www.welovepilates.de/kontakt",
           "http": 200,
-          "load_seconds": 0.68,
+          "load_seconds": 0.76,
           "status": "ok"
         }
       ],
       "suggestions": [
-        "On-Page: Startseite: Title zu lang (80 Zeichen) — wird abgeschnitten.",
+        "On-Page: Startseite: Title zu lang (78 Zeichen) — wird abgeschnitten.",
         "On-Page: Preise: Title zu lang (70 Zeichen) — wird abgeschnitten.",
         "On-Page: Preise: Meta-Description zu lang (168 Zeichen) — Ziel ≤ 160."
       ],
@@ -94,7 +94,7 @@
         "js_errors_list": [
           "Failed to load resource: the server responded with a status of 404 ()"
         ],
-        "screenshot": "docs/assets/booking/failure-2026-11-05.png"
+        "screenshot": "docs/assets/booking/failure-2026-11-06.png"
       },
       "items": [
         {
@@ -119,7 +119,7 @@
       ],
       "suggestions": [
         "Buchungswidget dringend manuell prüfen — Kunden können evtl. nicht buchen!",
-        "Screenshot des Fehlers: docs/assets/booking/failure-2026-11-05.png",
+        "Screenshot des Fehlers: docs/assets/booking/failure-2026-11-06.png",
         "1 JavaScript-Fehler im Buchungs-Widget prüfen (siehe Details)."
       ],
       "setup_hint": "",
@@ -162,7 +162,7 @@
   "suggestions": [
     {
       "bereich": "Website & Fehler",
-      "vorschlag": "On-Page: Startseite: Title zu lang (80 Zeichen) — wird abgeschnitten."
+      "vorschlag": "On-Page: Startseite: Title zu lang (78 Zeichen) — wird abgeschnitten."
     },
     {
       "bereich": "Website & Fehler",
@@ -178,7 +178,7 @@
     },
     {
       "bereich": "Buchungsprozess",
-      "vorschlag": "Screenshot des Fehlers: docs/assets/booking/failure-2026-11-05.png"
+      "vorschlag": "Screenshot des Fehlers: docs/assets/booking/failure-2026-11-06.png"
     },
     {
       "bereich": "Buchungsprozess",
