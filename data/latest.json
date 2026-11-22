@@ -1,14 +1,14 @@
 {
-  "date": "2026-11-21",
-  "generated_at": "2026-11-21T13:19:43.464703+00:00",
+  "date": "2026-11-22",
+  "generated_at": "2026-11-22T13:12:07.877759+00:00",
   "site": "https://www.welovepilates.de",
   "overall_status": "error",
   "sections": [
     {
       "key": "uptime",
       "title": "Website & Fehler",
-      "status": "warning",
-      "summary": "Alle Seiten erreichbar, aber 1 langsam / 0 tote Links.",
+      "status": "ok",
+      "summary": "Alle 4 Seiten erreichbar und schnell.",
       "metrics": {
         "geprüfte_seiten": 4,
         "tote_links": 0,
@@ -19,9 +19,8 @@
           "page": "Startseite",
           "url": "https://www.welovepilates.de/",
           "http": 200,
-          "load_seconds": 4.01,
-          "status": "warning",
-          "detail": "Langsam: 4.0s (Schwelle 4.0s)",
+          "load_seconds": 1.01,
+          "status": "ok",
           "seo_issues": [
             "Title zu lang (78 Zeichen) — wird abgeschnitten."
           ],
@@ -37,7 +36,7 @@
           "page": "Kurse",
           "url": "https://www.welovepilates.de/kurse",
           "http": 200,
-          "load_seconds": 3.81,
+          "load_seconds": 1.21,
           "status": "ok",
           "seo_issues": [],
           "seo_metrics": {
@@ -52,7 +51,7 @@
           "page": "Preise",
           "url": "https://www.welovepilates.de/preise",
           "http": 200,
-          "load_seconds": 1.04,
+          "load_seconds": 1.18,
           "status": "ok",
           "seo_issues": [
             "Title zu lang (70 Zeichen) — wird abgeschnitten.",
@@ -95,7 +94,7 @@
         "js_errors_list": [
           "Failed to load resource: the server responded with a status of 404 (Not Found)"
         ],
-        "screenshot": "docs/assets/booking/failure-2026-11-21.png"
+        "screenshot": "docs/assets/booking/failure-2026-11-22.png"
       },
       "items": [
         {
@@ -120,7 +119,7 @@
       ],
       "suggestions": [
         "Buchungswidget dringend manuell prüfen — Kunden können evtl. nicht buchen!",
-        "Screenshot des Fehlers: docs/assets/booking/failure-2026-11-21.png",
+        "Screenshot des Fehlers: docs/assets/booking/failure-2026-11-22.png",
         "1 JavaScript-Fehler im Buchungs-Widget prüfen (siehe Details)."
       ],
       "setup_hint": "",
@@ -179,7 +178,7 @@
     },
     {
       "bereich": "Buchungsprozess",
-      "vorschlag": "Screenshot des Fehlers: docs/assets/booking/failure-2026-11-21.png"
+      "vorschlag": "Screenshot des Fehlers: docs/assets/booking/failure-2026-11-22.png"
     },
     {
       "bereich": "Buchungsprozess",
